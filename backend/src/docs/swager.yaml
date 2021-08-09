@@ -141,6 +141,141 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /races:
+    get:
+      description: Returns a list of races
+      responses:
+        '200':
+          description: List of races returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Race'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new race
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Race'
+      responses:
+        '201':
+          description: Race has been created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Race'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /races/{_id}:
+    get:
+      description: Get a race
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Returns a Race
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Race'
+        '404':
+          description: Race based on id is doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      description: Updates a race
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Race'
+      responses:
+        '200':
+          description: Race has been updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Race'
+        '400':
+          description: Invalid request when the post data is invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      description: Removes a race
+      parameters:
+        - in: path
+          name: _id
+          required: true
+          schema: 
+            type: string
+      responses:
+        '200':
+          description: Race has been deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {}
+        '404':
+          description: Race based on id is doesn't exist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Car:
@@ -158,6 +293,36 @@ components:
           type: string
         price:
           type: number
+        active:
+          type: boolean
+    Error:
+      type: object
+      required:
+        - message
+        - has_error
+      properties:
+        message:
+          type: string
+        has_error:
+          type: boolean
+    Race:
+      type: object
+      required:
+        - date
+        - teams
+        - street
+        - city
+      properties:
+        date:
+          type: string
+        teams:
+          type: number
+        street:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
         active:
           type: boolean
     Error:
