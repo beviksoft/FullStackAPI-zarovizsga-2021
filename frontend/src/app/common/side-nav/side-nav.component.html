@@ -1,44 +1,26 @@
-<div *ngIf="(user$ | async)" id="layoutSidenav_nav">
-  <nav
-    class="sb-sidenav accordion sb-sidenav-light"
-    id="sidenavAccordion"
-  >
+<!-- <div *ngIf="(user$ | async)" id="layoutSidenav_nav"> -->
+<div id="layoutSidenav_nav">
+  <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
       <div class="nav">
         <div class="sb-sidenav-menu-heading">Core</div>
-        <a
-          class="nav-link"
-          routerLink="/"
-        >
-          <div class="sb-nav-link-icon"><i
-              class="fas fa-tachometer-alt"></i></div> Dashboard
+        <a class="nav-link" routerLink="/">
+          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div> Dashboard
         </a>
         <div class="sb-sidenav-menu-heading">Data</div>
-        <a
-          class="nav-link"
-          routerLink="/cars"
-        >
+        <a class="nav-link" routerLink="/cars">
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i>
           </div> Cars
         </a>
-        <a
-          class="nav-link"
-          routerLink="/races"
-        >
+        <a class="nav-link" routerLink="/races">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Races
         </a>
-        <a
-          class="nav-link"
-          routerLink="/services"
-        >
+        <a class="nav-link" routerLink="/services">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Services
         </a>
-        <a
-          class="nav-link"
-          routerLink="/customers"
-        >
+        <a class="nav-link" routerLink="/customers">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Customers
         </a>

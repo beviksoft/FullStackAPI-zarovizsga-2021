@@ -1,10 +1,33 @@
 <div class="container p-3">
-
   <h1>Customers</h1>
-
   <div class="row">
     <div class="col-12">
-
+      <table class="table">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Job</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of list$ | async">
+            <td>{{ customer.firstName }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.job }}</td>
+            <td>
+              <div class="btn-group">
+                <button [routerLink]="['/', 'customers', 'edit', customer._id]" class="btn btn-info">
+                  <i class="fas fa-pencil-alt"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
